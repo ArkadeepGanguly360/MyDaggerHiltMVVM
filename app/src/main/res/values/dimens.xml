@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="dimens_4dp">4dp</dimen>
+    <dimen name="dimens_8dp">8dp</dimen>
+    <dimen name="dimens_12dp">12dp</dimen>
+    <dimen name="dimens_18sp">18sp</dimen>
+    <dimen name="dimens_14sp">14sp</dimen>
+    <dimen name="dimens_12sp">12sp</dimen>
+    <dimen name="dimens_10sp">10sp</dimen>
+    <dimen name="dimens_30sp">30sp</dimen>
+    <dimen name="dimens_15dp">15dp</dimen>
+    <dimen name="dimens_16dp">16dp</dimen>
+    <dimen name="dimens_20sp">20sp</dimen>
+    <dimen name="dimens_60dp">60dp</dimen>
+    <dimen name="dimens_55dp">55dp</dimen>
+    <dimen name="dimens_50dp">50dp</dimen>
+    <dimen name="dimens_16sp">16sp</dimen>
+    <dimen name="dimens_30dp">30dp</dimen>
+    <dimen name="dimens_35dp">35dp</dimen>
+    <dimen name="dimens_20dp">20dp</dimen>
+    <dimen name="dimens_40dp">40dp</dimen>
+    <dimen name="dimens_45dp">45dp</dimen>
+    <dimen name="dimens_10dp">10dp</dimen>
+    <dimen name="dimens_100dp">100dp</dimen>
+    <dimen name="dimens_70dp">70dp</dimen>
+    <dimen name="dimens_25dp">25dp</dimen>
+    <dimen name="dimens_5dp">5dp</dimen>
+    <dimen name="dimens_3dp">3dp</dimen>
+    <dimen name="dimens_2dp">2dp</dimen>
+    <dimen name="dimens_150dp">150dp</dimen>
+    <dimen name="dimens_200dp">200dp</dimen>
+    <dimen name="common_list_image_size">150dp</dimen>
+    <dimen name="me_list_image_size">100dp</dimen>
+    <dimen name="non_profit_list_image_size">100dp</dimen>
+    <dimen name="big_image_view_size">150dp</dimen>
+    <dimen name="small_image_view_size">80dp</dimen>
+    <dimen name="border_strokoe_width">1dp</dimen>
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="button_width">150dp</dimen>
+    <dimen name="button_width_big">250dp</dimen>
+    <dimen name="me_icon_width">20dp</dimen>
+    <dimen name="edi_text_size">16sp</dimen>
+    <dimen name="heading_text_size">18sp</dimen>
+    <dimen name="textview_text_size">16sp</dimen>
+    <dimen name="textview_small_text_size">14sp</dimen>
+    <dimen name="textview_small_text_size2">12sp</dimen>
+    <dimen name="adapter_item_heading_text_size">16sp</dimen>
+    <dimen name="adapter_item_text_size">12sp</dimen>
+
+    <dimen name="bottom_navigation_icon_size" tools:override="true">24dp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">60dp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="button_small_text_size">16sp</dimen>
+    <dimen name="login_screen_text_size">14sp</dimen>
+    <dimen name="button_height">60dp</dimen>
+
+    <dimen name="dialog_height">260dp</dimen>
+    <dimen name="dimens_250sp">250sp</dimen>
+
+    <!-- GENERAL -->
+    <dimen name="default_stroke_width">7dp</dimen>
+    <dimen name="default_background_stroke_width">3dp</dimen>
+
+</resources>
