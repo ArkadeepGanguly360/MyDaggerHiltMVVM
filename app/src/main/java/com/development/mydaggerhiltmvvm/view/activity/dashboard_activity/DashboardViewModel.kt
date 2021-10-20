@@ -57,6 +57,9 @@ class DashboardViewModel @ViewModelInject constructor(
 
     //var mainDatabase: MainDatabase? = null
 
+    var currentPage =  MutableLiveData(1)
+    var totalPageCount = 0
+
     fun initActivity(baseActivity: BaseActivity, dashboardActivity: DashboardActivity) {
         this.baseActivity = baseActivity
         this.dashboardActivity = dashboardActivity
@@ -83,7 +86,12 @@ class DashboardViewModel @ViewModelInject constructor(
         if (networkHelper.isNetworkConnected()) {
             //progressbarVisibility.set(View.VISIBLE)
             baseActivity.showProgressDialog()
-            val query = restInterface.getMyFriendList(userPref.getUserToken())
+
+          /*  val map = HashMap<String, Any>()
+            map["page_no"] = currentPage.value!!
+            map["page_limit"] = 10*/
+
+            val query = restInterface.getMyFriendList(userPref.getUserToken()/*,map*/)
             allWebServiceCall.webServiceCall(query, this, "getMyFriendList")
         } else {
             //networkStatus.postValue("No Internet Connection")

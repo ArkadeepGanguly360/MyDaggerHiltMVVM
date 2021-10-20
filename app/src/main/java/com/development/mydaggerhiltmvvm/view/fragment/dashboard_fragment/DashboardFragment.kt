@@ -1,29 +1,27 @@
 package com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.adapter.MyFriendListAdapter
 import com.development.mydaggerhiltmvvm.databinding.FragmentDashboardBinding
-import com.development.mydaggerhiltmvvm.databinding.FragmentProfileBinding
 import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
 import com.development.mydaggerhiltmvvm.model.FriendsData
 import com.development.mydaggerhiltmvvm.model.FriendsResponse
-import com.development.mydaggerhiltmvvm.util.common_utils.UtilExtensions
-import com.development.mydaggerhiltmvvm.util.common_utils.UtilExtensions.myToast
 import com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardViewModel
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment() {
@@ -60,6 +58,7 @@ class DashboardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //pagination()
 
        /* observeNetworkStatus()
         observeValidateMsg()*/
@@ -97,6 +96,37 @@ class DashboardFragment : BaseFragment() {
             }
             dashboardViewModel.observeFriendList().observe(viewLifecycleOwner, observer)
         }
+    }
+
+    private fun pagination() {
+        binding.recycleFrnd.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager?
+                val lastVisibleItem =
+                    Objects.requireNonNull(layoutManager)!!.findLastVisibleItemPosition()
+                val totalItem: Int = myFriendListAdapter.getItemCount()
+                var isLastVisibleitem = false
+                if (lastVisibleItem == totalItem - 1) isLastVisibleitem = true
+                if (totalItem > 0) {
+                    if (dashboardViewModel.currentPage.value!! < dashboardViewModel.totalPageCount && isLastVisibleitem) {
+                        try {
+                            val current = dashboardViewModel.currentPage.value
+                            dashboardViewModel.currentPage.value = current!! + 1
+                            CoroutineScope(Dispatchers.Main).launch {
+                                dashboardViewModel.getMyFriendList()
+                            }
+                        } catch (e: ArrayIndexOutOfBoundsException) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /*  private fun observeNetworkStatus() {
