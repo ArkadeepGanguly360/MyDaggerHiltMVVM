@@ -26,7 +26,7 @@ class MapFragment : BaseFragment() {
 
     private val callback1 = OnMapReadyCallback { googleMap ->
             map = googleMap
-            map!!.uiSettings.isMyLocationButtonEnabled = false
+            map!!.uiSettings.isMyLocationButtonEnabled = true
             if (ActivityCompat.checkSelfPermission(
                     baseActivity,
                     Manifest.permission.ACCESS_FINE_LOCATION
@@ -51,9 +51,9 @@ class MapFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (!::binding.isInitialized) {
+       /* if (!::binding.isInitialized) {*/
             binding = putContentView(R.layout.fragment_map, layoutInflater, container)
-        }
+       // }
         return binding.root
     }
 
