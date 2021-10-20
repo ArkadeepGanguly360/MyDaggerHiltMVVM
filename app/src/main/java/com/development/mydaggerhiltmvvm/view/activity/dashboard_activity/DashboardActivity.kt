@@ -108,7 +108,7 @@ class DashboardActivity : BaseActivity() {
             )
         )
 
-       /*Todo connect nav controller with Toolbar*/
+        /*Todo connect nav controller with Toolbar*/
         setSupportActionBar(binding.mainContent.toolbarLayout.toolbarMain)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setupActionBarWithNavController(
@@ -116,10 +116,10 @@ class DashboardActivity : BaseActivity() {
             appBarConfiguration
         )
 
-       /*Todo navigation drawer attached with navController*/
+        /*Todo navigation drawer attached with navController*/
         binding.navView.setupWithNavController(navController)
 
-       /*Todo on nav controller destination change listener*/
+        /*Todo on nav controller destination change listener*/
         navController.addOnDestinationChangedListener(navigationDestListener)
     }
 
@@ -147,7 +147,10 @@ class DashboardActivity : BaseActivity() {
                     navController.popBackStack()
                 }
                 binding.mainContent.toolbarLayout.imgToolbarNotification.id -> {
-                    navController.navigate(R.id.notificationFragment)
+                     navController.navigate(R.id.notificationFragment)
+                  /*  createAlertDialog("Alert!", "Please confirm to Logout!", "Yes", "No") {
+                        true
+                    }*/
                 }
             }
         }
@@ -162,9 +165,6 @@ class DashboardActivity : BaseActivity() {
                 }
                 backPressedOnce = true
                 Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show()
-              /*  createAlertDialog("Alert!","Please confirm to Logout!","Yes","No"){
-                    true
-                }*/
                 Handler().postDelayed(2000) {
                     backPressedOnce = false
                 }

@@ -1,6 +1,7 @@
 package com.development.mydaggerhiltmvvm.view.fragment.login_fragment
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,8 @@ class LoginFragment : BaseFragment() {
     private lateinit var  binding : FragmentLoginBinding
     private lateinit var  loginViewModel: LoginViewModel
 
+    private var isPasswordVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -48,6 +51,7 @@ class LoginFragment : BaseFragment() {
 
         binding.btLogin.onClick()
         binding.tvSignup.onClick()
+        binding.imgPasswordCheck.onClick()
     }
 
     private fun View.onClick() {
@@ -63,6 +67,13 @@ class LoginFragment : BaseFragment() {
                         R.id.action_loginFragment_to_signupFragment,
                         null
                     )
+                }
+                binding.imgPasswordCheck.id -> {
+                    if (!isPasswordVisible)
+                        binding.etPassword.transformationMethod = PasswordTransformationMethod()
+                    else
+                        binding.etPassword.transformationMethod = null
+                    isPasswordVisible = !isPasswordVisible
                 }
             }
         }

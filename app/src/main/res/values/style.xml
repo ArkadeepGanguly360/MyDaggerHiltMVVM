@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
         <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/dimens_20dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimens_20dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimens_20dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimens_20dp</item>
+        <!--<item name="boxStrokeColor">@color/black</item>-->
     </style>
 </resources>
