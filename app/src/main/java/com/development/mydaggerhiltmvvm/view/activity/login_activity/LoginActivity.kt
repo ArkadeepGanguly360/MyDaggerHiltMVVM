@@ -9,9 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.ActivityLoginBinding
-import com.development.mydaggerhiltmvvm.databinding.ActivityMainBinding
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
-import com.development.mydaggerhiltmvvm.view.activity.main_activity.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +23,7 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding = putContentView(R.layout.activity_login)
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginViewModel.initActivity(this,this)
         initNavController()

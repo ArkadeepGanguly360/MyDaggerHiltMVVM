@@ -1,11 +1,14 @@
 package com.development.mydaggerhiltmvvm.view.fragment.base_fragment
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,21 +18,33 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.development.mydaggerhiltmvvm.R
+import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
+import com.development.mydaggerhiltmvvm.util.common_utils.CircleImageView
 import com.development.mydaggerhiltmvvm.util.common_utils.UtilFile.prepareFilePart
 import com.development.mydaggerhiltmvvm.util.image_utils.ImageUtilsCameraGallery
 import com.development.mydaggerhiltmvvm.util.kotlin_permission.KotlinPermission
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
-import okhttp3.MediaType
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.*
+import java.lang.System.load
 import java.util.*
+import java.util.ServiceLoader.load
 
-open class BaseFragment : BaseFragmentAbstract(), ImageUtilsCameraGallery.ImageAttachmentListener {
+open class BaseFragment() : BaseFragmentAbstract(), ImageUtilsCameraGallery.ImageAttachmentListener {
 
     protected lateinit var baseActivity: BaseActivity
+    protected lateinit var userPref: UserSharedPrefrence
 
     private var imageutils: ImageUtilsCameraGallery? = null
 
@@ -57,6 +72,7 @@ open class BaseFragment : BaseFragmentAbstract(), ImageUtilsCameraGallery.ImageA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         baseActivity = requireActivity() as BaseActivity
+        userPref = UserSharedPrefrence(requireActivity())
     }
 
     override fun <T : ViewDataBinding?> putContentView(
@@ -276,4 +292,43 @@ open class BaseFragment : BaseFragmentAbstract(), ImageUtilsCameraGallery.ImageA
             .ask()
     }
     /////// This are responsible for asking permission at run time using lambda///////////
+
+    open fun spotUserOnMap(map: GoogleMap, location: LatLng?): Marker? {
+        val marker = map.addMarker(
+            MarkerOptions().icon(
+                BitmapDescriptorFactory.fromBitmap(
+                    createCustomMyLocationMarker(baseActivity)
+                )
+               /* BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)*/
+            )
+                .position(location)
+        )
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 10.0f))
+        return marker
+    }
+
+    open fun createCustomMyLocationMarker(context: Context?): Bitmap? {
+        val marker: View = LayoutInflater.from(context)
+            .inflate(R.layout.custom_my_location_map_marker_layout, null)
+        val marker_img: CircleImageView = marker.findViewById(R.id.marker_img)
+        var image = "image"
+       /* if (!userPref.getUserData().getProfilePic().isEmpty()) {
+            image = BASE_MATCH_MAKER_URL_IMAGE + userPref.getUserData().getProfilePic()
+        }*/
+        Glide.with(requireActivity()).load(image).placeholder(R.drawable.who).into(marker_img)
+        val displayMetrics = DisplayMetrics()
+        baseActivity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+        marker.layoutParams = ViewGroup.LayoutParams(52, ViewGroup.LayoutParams.WRAP_CONTENT)
+        marker.measure(displayMetrics.widthPixels, displayMetrics.heightPixels)
+        marker.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels)
+        marker.buildDrawingCache()
+        val bitmap = Bitmap.createBitmap(
+            marker.measuredWidth,
+            marker.measuredHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        marker.draw(canvas)
+        return bitmap
+    }
 }

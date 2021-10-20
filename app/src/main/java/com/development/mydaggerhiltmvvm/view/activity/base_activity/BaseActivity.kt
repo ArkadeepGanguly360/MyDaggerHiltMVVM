@@ -23,13 +23,17 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.databinding.ViewDataBinding
+import com.development.mydaggerhiltmvvm.MyApplication
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.ActivityBaseBinding
 import com.development.mydaggerhiltmvvm.service.LocationUpdateService
 import com.development.mydaggerhiltmvvm.util.MyConstant
+import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
 import com.development.mydaggerhiltmvvm.util.kotlin_permission.KotlinPermission
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
@@ -37,16 +41,21 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.google.android.material.datepicker.*
 import com.google.android.material.snackbar.Snackbar
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.zip.DataFormatException
 
 open class BaseActivity : BaseActivityAbstract() {
+
     private lateinit var progressDialog: Dialog
     private lateinit var alertDialog: AlertDialog
     private lateinit var baseActivityBinding: ActivityBaseBinding
+    protected lateinit var userPref: UserSharedPrefrence
 
-    // kotlin permission
+    //Todo kotlin permission
     private var listPermission = ArrayList<String>()
 
     private val REQUEST_CHECK_GPS_SETTINGS = 101
@@ -56,7 +65,20 @@ open class BaseActivity : BaseActivityAbstract() {
         super.onCreate(savedInstanceState)
         baseActivityBinding = setContentView(this, R.layout.activity_base)
         baseActivityBinding.baseActivity = this
+        userPref = UserSharedPrefrence(this)
         createProgressDialog()
+        checkForLocationPermission()
+    }
+
+    protected open fun <T : ViewDataBinding?> putContentView(@LayoutRes resId: Int): T {
+        val bind: ViewDataBinding =
+            DataBindingUtil.inflate(
+                layoutInflater,
+                resId,
+                baseActivityBinding!!.baseFrameActivity,
+                true
+            )
+        return bind as T
     }
 
     override fun createProgressDialog() {
@@ -78,7 +100,6 @@ open class BaseActivity : BaseActivityAbstract() {
     }
 
     override fun showProgressDialog() {
-        createProgressDialog()
         progressDialog.show()
     }
 
@@ -91,7 +112,6 @@ open class BaseActivity : BaseActivityAbstract() {
     override fun cancelProgressDialog() {
         /* val tv = progressDialog.progress_title
            tv.text = "Loading"*/
-        createProgressDialog()
         progressDialog.cancel()
     }
 
@@ -370,5 +390,10 @@ open class BaseActivity : BaseActivityAbstract() {
         constraintsBuilder.setValidator(CompositeDateValidator.allOf(validators))
 
         return constraintsBuilder
+    }
+
+    @NonNull
+     fun createPartFromString(descriptionString: String): RequestBody {
+        return descriptionString.toRequestBody("multipart/form-data".toMediaTypeOrNull())
     }
 }

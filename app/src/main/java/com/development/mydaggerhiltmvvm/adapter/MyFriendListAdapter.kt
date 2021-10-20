@@ -7,17 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.FriendListItemBinding
+import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
 import com.development.mydaggerhiltmvvm.model.FriendsData
 import com.development.mydaggerhiltmvvm.util.MyConstant
 
 class MyFriendListAdapter(
     val context: Context,
     val list: ArrayList<FriendsData>,
+    val listener: RecyclerViewItemOnClickListener
 ) :
-    RecyclerView.Adapter<MyFriendListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<MyFriendListAdapter.ViewHolder>(/*DiffUtilNote()*/) {
 
     init {
         setHasStableIds(true)
@@ -48,30 +51,46 @@ class MyFriendListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = list[position]
-        holder.rowBinding.name = item.friendDetails.full_name
 
-        if(item.friendDetails.location.contains(",")){
-            val location =  StringBuilder(item.friendDetails.location).insert(item.friendDetails.location.indexOf(',')+1, " ").toString()
-            holder.rowBinding.location = location
-        }else {
-            holder.rowBinding.location = item.friendDetails.location
-        }
+        holder.rowBinding.apply {
+            name = item.friendDetails.full_name
 
-        holder.rowBinding.image =
-            MyConstant.COMMON_CONST.PROFILE_IMG_PATH + item.friendDetails.profile_image
+            if(item.friendDetails.location.contains(",")){
+                var location =  StringBuilder(item.friendDetails.location).insert(item.friendDetails.location.indexOf(',')+1, " ").toString()
+                location = location
+            }else {
+                location = item.friendDetails.location
+            }
 
-        if (position % 2 == 0) {
-            holder.rowBinding.cons.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
-        } else {
-            holder.rowBinding.cons.setBackgroundColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.white
+            image = MyConstant.COMMON_CONST.PROFILE_IMG_PATH + item.friendDetails.profile_image
+
+            if (position % 2 == 0) {
+                cons.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+            } else {
+                cons.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
                 )
-            )
+            }
+
+            cons.setOnClickListener {
+                listener.onViewClick(position)
+            }
         }
     }
 
     inner class ViewHolder(val rowBinding: FriendListItemBinding) :
         RecyclerView.ViewHolder(rowBinding.root)
+
+   /* class DiffUtilNote : DiffUtil.ItemCallback<FriendsData>() {
+        override fun areItemsTheSame(oldItem: FriendsData, newItem: FriendsData): Boolean {
+            return newItem._id == oldItem._id
+        }
+
+        override fun areContentsTheSame(oldItem: FriendsData, newItem: FriendsData): Boolean {
+            return newItem == oldItem
+        }
+    }*/
 }

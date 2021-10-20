@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import com.development.mydaggerhiltmvvm.MyApplication
 import com.development.mydaggerhiltmvvm.util.MyConstant.COMMON_CONST.EMAIL_PATTERN
 import com.development.mydaggerhiltmvvm.util.image_utils.FileUtils
+import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
 import com.google.android.material.textfield.TextInputEditText
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

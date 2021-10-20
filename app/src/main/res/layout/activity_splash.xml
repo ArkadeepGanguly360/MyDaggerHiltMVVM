@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="baseActivity"
-            type="com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/base_frame_activity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg"
+        tools:context=".view.activity.SplashActivity">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

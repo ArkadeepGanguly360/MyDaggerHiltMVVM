@@ -5,8 +5,10 @@ import android.content.SharedPreferences
 import android.location.Location
 import android.util.Log
 import com.development.mydaggerhiltmvvm.model.UserData
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -111,13 +113,13 @@ class UserSharedPrefrence @Inject constructor(@ApplicationContext private val co
         editor.putString(CURRENT_LONG, "" + longitude)
     }
 
-   /* fun getUserCurrentLocation(): LatLng? {
+    fun getUserCurrentLocation(): LatLng? {
         val lati = pref.getString(CURRENT_LAT, "0.0")
         val longi = pref.getString(CURRENT_LONG, "0.0")
         return LatLng(
             Objects.requireNonNull(lati)!!.toDouble(), Objects.requireNonNull(longi)!!.toDouble()
         )
-    }*/
+    }
 
     fun getCURRENT_ADDRESS(): String? {
         return pref.getString(CURRENT_ADDRESS, "")

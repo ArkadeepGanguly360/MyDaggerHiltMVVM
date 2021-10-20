@@ -9,6 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 open class MyApplication: Application(){
+
     companion object {
         var myApplication: MyApplication? = null
 
@@ -19,5 +20,9 @@ open class MyApplication: Application(){
         fun applicationContext(): Context {
             return myApplication!!.applicationContext
         }
+    }
+
+    init {
+        myApplication = this
     }
 }
