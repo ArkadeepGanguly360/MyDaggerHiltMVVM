@@ -162,6 +162,9 @@ class DashboardActivity : BaseActivity() {
                 }
                 backPressedOnce = true
                 Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show()
+              /*  createAlertDialog("Alert!","Please confirm to Logout!","Yes","No"){
+                    true
+                }*/
                 Handler().postDelayed(2000) {
                     backPressedOnce = false
                 }
