@@ -88,7 +88,7 @@ class DashboardFragment : BaseFragment() {
         CoroutineScope(Dispatchers.Main).launch {
             var observer = Observer<FriendsResponse> { response ->
                 response.let {
-                    showToast(response.message)
+                   // showToast(response.message)
                     friendList.clear()
                     friendList.addAll(response.data)
                     myFriendListAdapter.notifyDataSetChanged()
