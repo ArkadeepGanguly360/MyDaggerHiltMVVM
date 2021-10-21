@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="viewModel"
-            type="com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.fragment.dashboard_fragment.FriendDetailsFragment">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimens_20dp"
+            android:background="@drawable/rounded_corner_blue_stroke_bg"
+            android:minHeight="@dimen/dimens_40dp"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
+            android:textCursorDrawable="@null"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:paddingStart="@dimen/dimens_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/black"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
