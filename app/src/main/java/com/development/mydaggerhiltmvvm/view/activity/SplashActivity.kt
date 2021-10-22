@@ -10,6 +10,7 @@ import com.development.mydaggerhiltmvvm.databinding.ActivityLoginBinding
 import com.development.mydaggerhiltmvvm.databinding.ActivitySplashBinding
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
 import com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardActivity
+import com.development.mydaggerhiltmvvm.view.activity.introduction_activity.IntroductionActivity
 import com.development.mydaggerhiltmvvm.view.activity.login_activity.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,7 @@ class SplashActivity : BaseActivity() {
                 nextActivity(DashboardActivity::class.java, null, true)
             }, 1000)
         } else {
-            nextActivity(LoginActivity::class.java, null, true)
+            nextActivity(IntroductionActivity::class.java, null, true)
         }
     }
 }

@@ -237,7 +237,7 @@ open class BaseActivity : BaseActivityAbstract() {
 
     fun checkForLocationPermission() {
 
-        listPermission.addAll(MyConstant.APP_PERMISSION.PERMISSION)
+        listPermission.addAll(MyConstant.APP_PERMISSION.ALL_PERMISSION)
 
         if (checkPermission(listPermission)) {
             checkIfGpsIsOn()

@@ -39,16 +39,11 @@ class MyConstant {
             Manifest.permission.CAMERA
         )
 
-        val ALL_PERMISSION = listOf(
-            Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
-
         val ACCESS_FINE_LOCATION = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION
         )
 
-        val PERMISSION = listOf(
+        val ALL_PERMISSION = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE,
