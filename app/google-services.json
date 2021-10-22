@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "696243537309",
+    "project_id": "mydaggerhiltmvvm",
+    "storage_bucket": "mydaggerhiltmvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696243537309:android:c1915a11432e90cfe31b74",
+        "android_client_info": {
+          "package_name": "com.development.mydaggerhiltmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696243537309-qnmsdbcvs4k4b1qd070trjr2f46p1l2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC41Lb6wkdkJHZUSMJo2S6-4laiamYUmyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696243537309-qnmsdbcvs4k4b1qd070trjr2f46p1l2q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

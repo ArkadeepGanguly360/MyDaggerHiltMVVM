@@ -35,6 +35,8 @@ class UserSharedPrefrence @Inject constructor(@ApplicationContext private val co
     private val MEMORIALID = "memorialid"
     private val TYPE = "type"
 
+    private val USER_TOKEN_FCM = "user_token_fcm"
+
 
     init {
         pref = context.getSharedPreferences(prefName, MODE)
@@ -51,6 +53,15 @@ class UserSharedPrefrence @Inject constructor(@ApplicationContext private val co
 
             return instance!!
         }
+    }
+
+    fun setUserFCMToken(fcmToken: String?) {
+        editor.putString(USER_TOKEN_FCM, fcmToken)
+        editor.apply()
+    }
+
+    fun getUserFCMToken(): String? {
+        return pref.getString(USER_TOKEN_FCM, "tytytyttyt")
     }
 
     fun setUserToken(fullName: String) {

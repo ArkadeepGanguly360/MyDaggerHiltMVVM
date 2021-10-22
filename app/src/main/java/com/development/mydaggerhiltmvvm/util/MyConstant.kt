@@ -64,23 +64,6 @@ class MyConstant {
         const val GALLERY = "Gallery"
     }
 
-    object USER_LIST {
-        const val SEND_FRIEND_REQUEST = "Send_friend_request"
-        const val USER_DETAILS = "User_details"
-    }
-
-    object MEMORIALS_LIST {
-        const val JOIN_MEMORIAL = "Join_memorial"
-        const val MEMORIAL_DETAILS = "Memorial_details"
-    }
-
-    object SETTINGS_TYPE {
-        const val ANY_ONE_ON_THE_PLATFORM = "Any one on the platform"
-        const val MUTUAL_MEMBERS_OF_MEMORIALS = "Mutual members of memorials"
-        const val FRIENDS_OF_FRIEND = "Friends of Friend"
-        const val NONE = "None"
-    }
-
     object DATE_FORMAT {
         const val GENERAL_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         const val DAY_DATE_MONTH_YEAR_FORMAT = "EEEE, d'th' MMMM yyyy"
@@ -95,6 +78,19 @@ class MyConstant {
         const val DATE_TH_MONTH_YEAR = "d'th' MMM,yyyy"
         const val ONLY_YEAR = "yyyy"
         const val CHAT_SHOW_TIME = "MM/dd/yy,$TIME_AM_PM"
+    }
 
+    object NOTIFICATION_TYPE {
+        const val NOTIFY_TYPE = "NOTIFY_TYPE"
+        const val NOTIFICATION_TYPE = "type"
+        const val GENERAL = "GENERAL"
+        const val PUSH = "PUSH"
+        const val MATCH = "MATCH"
+        const val SUPER_LIKE = "SUPER-LIKE"
+        const val TAG = "TAG"
+        const val PROMOTION = "PROMOTION"
+        const val LIVE_EVENT = "LIVE EVENT"
+        const val MESSAGE = "message"
+        const val BROADCASTING = "Broadcasting"
     }
 }
