@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.SingleMultipleSelectAutoCompleteTextViewFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.dashboard_fragment.SingleMultipleSelectAutoCompleteTextViewFragment">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/tv_auto_friend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_corner_transparent_bg"
+            android:drawableEnd="@drawable/ic_drop_arrow"
+            android:drawablePadding="10dp"
+            android:dropDownHeight="300dp"
+            android:gravity="start|center_vertical"
+            android:hint="Multiple Friends Selection"
+            android:inputType="none"
+            android:minHeight="50dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:text="@{fragment.selectedFriends}"
+            android:textColor="#78848E"
+            android:textColorHint="#78848E"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"/>
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/tv_search_auto_friend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_corner_transparent_bg"
+            android:drawableEnd="@drawable/ic_drop_arrow"
+            android:drawablePadding="10dp"
+            android:focusable="true"
+            android:dropDownHeight="wrap_content"
+            android:duplicateParentState="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start|center_vertical"
+            android:hint="Search Friends"
+            android:inputType="text"
+            android:minHeight="50dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:text="@{fragment.searchedSelectedFriends}"
+            android:textColor="#78848E"
+            android:textColorHint="#78848E"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_auto_friend"
+            app:layout_constraintStart_toStartOf="@+id/tv_auto_friend"
+            app:layout_constraintTop_toBottomOf="@+id/tv_auto_friend" />
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/tv_single_auto_friend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_corner_transparent_bg"
+            android:drawableEnd="@drawable/ic_drop_arrow"
+            android:drawablePadding="10dp"
+            android:dropDownHeight="300dp"
+            android:gravity="start|center_vertical"
+            android:hint="Single Friend Selection"
+            android:inputType="none"
+            android:minHeight="50dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:text="@{fragment.selectedSingleFriends}"
+            android:textColor="#78848E"
+            android:textColorHint="#78848E"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_search_auto_friend"
+            app:layout_constraintStart_toStartOf="@+id/tv_search_auto_friend"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search_auto_friend" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

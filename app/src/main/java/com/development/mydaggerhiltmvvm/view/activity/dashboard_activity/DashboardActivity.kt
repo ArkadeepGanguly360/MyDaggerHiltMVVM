@@ -2,6 +2,7 @@ package com.development.mydaggerhiltmvvm.view.activity.dashboard_activity
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -38,6 +39,8 @@ class DashboardActivity : BaseActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private var backPressedOnce = false
 
+    private val requestCodeCameraPermission = 1001
+
     val toolbarVisibility = ObservableField(View.VISIBLE)
     val bottomBarVisibility = ObservableField(View.VISIBLE)
     val toolbarNotificationVisibility = ObservableField(View.VISIBLE)
@@ -65,6 +68,36 @@ class DashboardActivity : BaseActivity() {
                 R.id.profileFragment -> {
                 }
                 R.id.notificationFragment -> {
+                }
+                R.id.singleMultipleSelectAutoCompleteTextViewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.customPopupFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.readMoreTextviewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.googlePlaceFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.customBottomsheetFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.variousIntentFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.emojiKeyboardLikeWhatsAppFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.swipeVideosLikeTiktokFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.swipeImagesLikeTinderFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.barcodeScannerFragment -> {
+                    bottomBarVisibility.set(View.GONE)
                 }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
@@ -98,13 +131,24 @@ class DashboardActivity : BaseActivity() {
 
         /*Todo connect nav controller with bottom navigation view*/
         binding.mainContent.bottomNavigation.setupWithNavController(navController)
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.dashboardFragment,
                 R.id.mapFragment,
                 R.id.profileFragment,
                 R.id.notificationFragment,
-                R.id.friendDetailsFragment
+                R.id.friendDetailsFragment,
+                R.id.singleMultipleSelectAutoCompleteTextViewFragment,
+                R.id.customPopupFragment,
+                R.id.customBottomsheetFragment,
+                R.id.variousIntentFragment,
+                R.id.readMoreTextviewFragment,
+                R.id.googlePlaceFragment,
+                R.id.emojiKeyboardLikeWhatsAppFragment,
+                R.id.swipeVideosLikeTiktokFragment,
+                R.id.swipeImagesLikeTinderFragment,
+                R.id.barcodeScannerFragment
             )
         )
 
@@ -183,6 +227,22 @@ class DashboardActivity : BaseActivity() {
                 resultCode,
                 data
             )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == requestCodeCameraPermission && grantResults.isEmpty()){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                navController.navigate(R.id.barcodeScannerFragment)
+            }
+            else {
+                Toast.makeText(this,"Permission Denied", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

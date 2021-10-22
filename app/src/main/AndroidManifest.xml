@@ -34,9 +34,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".view.activity.login_activity.LoginActivity"/>
-        <activity android:name=".view.activity.dashboard_activity.DashboardActivity"
-            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".view.activity.login_activity.LoginActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".view.activity.dashboard_activity.DashboardActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

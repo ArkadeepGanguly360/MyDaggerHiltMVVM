@@ -54,6 +54,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'androidx.activity:activity-ktx:1.1.0'
 
@@ -93,12 +94,34 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
 
+    /*Todo Google Place*/
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.android.libraries.places:places:1.1.0'
+
     /*Todo Firebase*/
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     /*Todo Firebase Push Notification*/
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
+
+    /*Todo Google Emoji Keyboard*/
+    implementation 'com.vanniktech:emoji-google:0.8.0'
+
+    /*Todo Facebook Emoji Keyboard*/
+    implementation "com.vanniktech:emoji-facebook:0.8.0"
+
+    /*Todo Twitter Emoji Keyboard*/
+    implementation "com.vanniktech:emoji-twitter:0.8.0"
+
+    /*Todo GIF*/
+    implementation 'com.giphy.sdk:ui:2.1.7'
+
+    /* Todo Swipe Image Like Tinder*/
+    implementation 'com.yuyakaido.android:card-stack-view:2.3.4'
+
+    /* Todo Barcode Scanner*/
+    implementation 'com.google.android.gms:play-services-vision:19.0.0'
 
     /*Todo Room Database*/
    /* implementation "androidx.room:room-runtime:2.2.6"

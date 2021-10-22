@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/singleMultipleSelectAutoCompleteTextViewFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="SingleMultipleSelection" />
+    <item
+        android:id="@+id/customPopupFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Custom Popup" />
+    <item
+        android:id="@+id/customBottomsheetFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Custom Bottomsheet" />
+    <item
+        android:id="@+id/variousIntentFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Various Intent" />
+    <item
+        android:id="@+id/readMoreTextviewFragment"
+        android:icon="@drawable/ic_map"
+        android:title="ReadMore Textview" />
+    <item
+        android:id="@+id/googlePlaceFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Google Place" />
+    <item
+        android:id="@+id/emojiKeyboardLikeWhatsAppFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="WhatsApp EmojiKeyboard" />
+    <item
+        android:id="@+id/swipeVideosLikeTiktokFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Tiktok SwipeVideos" />
+    <item
+        android:id="@+id/swipeImagesLikeTinderFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Tinder SwipeImages" />
+    <item
+        android:id="@+id/barcodeScannerFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Barcode Scanner" />
+</menu>

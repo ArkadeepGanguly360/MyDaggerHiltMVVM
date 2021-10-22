@@ -24,6 +24,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
@@ -35,12 +36,16 @@ import com.development.mydaggerhiltmvvm.service.LocationUpdateService
 import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
 import com.development.mydaggerhiltmvvm.util.kotlin_permission.KotlinPermission
+import com.giphy.sdk.ui.Giphy
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
+import com.google.android.libraries.places.api.Places
 import com.google.android.material.datepicker.*
 import com.google.android.material.snackbar.Snackbar
+import com.vanniktech.emoji.EmojiManager
+import com.vanniktech.emoji.google.GoogleEmojiProvider
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -66,6 +71,11 @@ open class BaseActivity : BaseActivityAbstract() {
         baseActivityBinding = setContentView(this, R.layout.activity_base)
         baseActivityBinding.baseActivity = this
         userPref = UserSharedPrefrence(this)
+
+        Places.initialize(this, resources.getString(R.string.google_maps_key))
+        EmojiManager.install(GoogleEmojiProvider())
+        Giphy.configure(this, getString(R.string.giphyAPIKey))
+
         createProgressDialog()
         checkForLocationPermission()
     }
@@ -227,7 +237,7 @@ open class BaseActivity : BaseActivityAbstract() {
 
     fun checkForLocationPermission() {
 
-        listPermission.addAll(MyConstant.APP_PERMISSION.ACCESS_FINE_LOCATION)
+        listPermission.addAll(MyConstant.APP_PERMISSION.PERMISSION)
 
         if (checkPermission(listPermission)) {
             checkIfGpsIsOn()

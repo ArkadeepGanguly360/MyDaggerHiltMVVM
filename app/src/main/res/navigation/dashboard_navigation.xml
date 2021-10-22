@@ -38,4 +38,44 @@
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.FriendDetailsFragment"
         android:label="Friend Details"
         tools:layout="@layout/fragment_friend_details" />
+    <fragment
+        android:id="@+id/singleMultipleSelectAutoCompleteTextViewFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.SingleMultipleSelectAutoCompleteTextViewFragment"
+        android:label="SingleMultipleSelect" />
+    <fragment
+        android:id="@+id/customPopupFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.CustomPopupFragment"
+        android:label="Custom Popup" />
+    <fragment
+        android:id="@+id/customBottomsheetFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.CustomBottomsheetFragment"
+        android:label="Custom Bottomsheet" />
+    <fragment
+        android:id="@+id/variousIntentFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.VariousIntentFragment"
+        android:label="Various Intent" />
+    <fragment
+        android:id="@+id/readMoreTextviewFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.ReadMoreTextviewFragment"
+        android:label="ReadMore Textview" />
+    <fragment
+        android:id="@+id/googlePlaceFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.GooglePlaceFragment"
+        android:label="Google Place" />
+    <fragment
+        android:id="@+id/emojiKeyboardLikeWhatsAppFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.EmojiKeyboardLikeWhatsAppFragment"
+        android:label="WhatsApp EmojiKeyboard" />
+    <fragment
+        android:id="@+id/swipeVideosLikeTiktokFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.SwipeVideosLikeTiktokFragment"
+        android:label="Tiktok SwipeVideos" />
+    <fragment
+        android:id="@+id/swipeImagesLikeTinderFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.SwipeImagesLikeTinderFragment"
+        android:label="Tinder SwipeImages" />
+    <fragment
+        android:id="@+id/barcodeScannerFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.BarcodeScannerFragment"
+        android:label="Barcode Scanner" />
 </navigation>

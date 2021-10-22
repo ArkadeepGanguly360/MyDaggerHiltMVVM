@@ -34,6 +34,7 @@ class MyConstant {
     }
 
     object APP_PERMISSION {
+
         val ABOVE_API_29_PERMISSION = listOf(
             Manifest.permission.CAMERA
         )
@@ -47,16 +48,12 @@ class MyConstant {
             Manifest.permission.ACCESS_FINE_LOCATION
         )
 
-       /* val ACCESS_FINE_LOCATION = listOf(
-            Manifest.permission.ACCESS_FINE_LOCATION
-        )
-
-        val READ_STORAGE_PERMISSION = listOf(
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        )
-        val WRITE_STORAGE_PERMISSION = listOf(
+        val PERMISSION = listOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )*/
+        )
     }
 
     object IMAGE_PICK_TYPE {
