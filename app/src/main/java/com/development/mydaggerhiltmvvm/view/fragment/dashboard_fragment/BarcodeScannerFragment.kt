@@ -8,26 +8,34 @@ import android.view.LayoutInflater
 import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.util.isNotEmpty
+import com.budiyev.android.codescanner.AutoFocusMode
+import com.budiyev.android.codescanner.CodeScanner
+import com.budiyev.android.codescanner.CodeScannerView
+import com.budiyev.android.codescanner.DecodeCallback
+import com.budiyev.android.codescanner.ErrorCallback
+import com.budiyev.android.codescanner.ScanMode
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.FragmentBarcodeScannerBinding
 import com.development.mydaggerhiltmvvm.databinding.FragmentCustomPopupBinding
+import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
-import com.google.android.gms.vision.CameraSource
-import com.google.android.gms.vision.Detector
-import com.google.android.gms.vision.barcode.Barcode
-import com.google.android.gms.vision.barcode.BarcodeDetector
 import java.lang.Exception
 
 class BarcodeScannerFragment : BaseFragment() {
 
     private lateinit var binding: FragmentBarcodeScannerBinding
-    private lateinit var cameraSource: CameraSource
-    private lateinit var detector: BarcodeDetector
+    private lateinit var codeScanner: CodeScanner
+
+    //Todo kotlin permission
+    private var listPermission = java.util.ArrayList<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        listPermission.addAll(MyConstant.APP_PERMISSION.CAMERA_PERMISSION)
     }
 
     override fun onCreateView(
@@ -41,58 +49,66 @@ class BarcodeScannerFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setupControls()
+        checkPermissionForScan()
     }
 
-    private fun setupControls() {
-        detector = BarcodeDetector.Builder(requireActivity()).build()
-        cameraSource = CameraSource.Builder(requireActivity(), detector)
-            .setAutoFocusEnabled(true)
-            .build()
-        binding.cameraSurfaceView.holder.addCallback(surfaceCallback)
-        detector.setProcessor(processor)
-    }
-
-
-    private val surfaceCallback = object : SurfaceHolder.Callback{
-        override fun surfaceCreated(holder: SurfaceHolder) {
-            try {
-                if (ActivityCompat.checkSelfPermission(
-                        requireActivity(),
-                        android.Manifest.permission.CAMERA
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    return
-                }
-                cameraSource.start(holder)
-            } catch (exception : Exception){
-
+    private fun checkPermissionForScan() {
+        if (baseActivity.checkPermission(listPermission))
+            startScanning()
+        else {
+            baseActivity.askPermission(listPermission) {
+                if (it)
+                    startScanning()
             }
-        }
-
-        override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-
-        }
-
-        override fun surfaceDestroyed(holder: SurfaceHolder) {
-            cameraSource.stop()
         }
     }
 
-    private val processor = object : Detector.Processor<Barcode>{
-        override fun release() {
+    private fun startScanning() {
+        codeScanner = CodeScanner(requireActivity(), binding.scannerView)
+        codeScanner.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
+        codeScanner.formats = CodeScanner.ALL_FORMATS // list of type BarcodeFormat,
+        // ex. listOf(BarcodeFormat.QR_CODE)
+        codeScanner.autoFocusMode = AutoFocusMode.SAFE // or CONTINUOUS
+        codeScanner.scanMode = ScanMode.SINGLE // or CONTINUOUS or PREVIEW
+        codeScanner.isAutoFocusEnabled = true // Whether to enable auto focus or not
+        codeScanner.isFlashEnabled = false // Whether to enable flash or not
+
+        // Callbacks
+        codeScanner.decodeCallback = DecodeCallback {
+            requireActivity().runOnUiThread {
+                Toast.makeText(requireActivity(), "Scan result: ${it.text}", Toast.LENGTH_LONG)
+                    .show()
+                goToNextFragment(
+                    R.id.action_barcodeScannerFragment_to_dashboardFragment,
+                    null
+                )
+            }
+        }
+        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
+            requireActivity().runOnUiThread {
+                Toast.makeText(
+                    requireActivity(), "Camera initialization error: ${it.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
-        override fun receiveDetections(p0: Detector.Detections<Barcode>?) {
-            if(p0 != null && p0.detectedItems.isNotEmpty()){
-                val qrCodes: SparseArray<Barcode> = p0.detectedItems
-                val code = qrCodes.valueAt(0)
-                binding.textScanResult.text = code.displayValue
-            }
-            else {
-                binding.textScanResult.text = ""
-            }
+        binding.scannerView.setOnClickListener {
+            codeScanner.startPreview()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(::codeScanner.isInitialized) {
+            codeScanner?.startPreview()
+        }
+    }
+
+    override fun onPause() {
+        if(::codeScanner.isInitialized) {
+            codeScanner?.releaseResources()
+        }
+        super.onPause()
     }
 }

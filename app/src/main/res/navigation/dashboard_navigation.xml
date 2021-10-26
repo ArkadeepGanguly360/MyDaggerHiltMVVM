@@ -77,7 +77,15 @@
     <fragment
         android:id="@+id/barcodeScannerFragment"
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.BarcodeScannerFragment"
-        android:label="Barcode Scanner" />
+        android:label="Barcode Scanner" >
+        <action
+            android:id="@+id/action_barcodeScannerFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/customRadioButtonFragment"
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.CustomRadioButtonFragment"
@@ -102,4 +110,8 @@
         android:id="@+id/phoneContactListFragment"
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.PhoneContactListFragment"
         android:label="Phone Contacts" />
+    <fragment
+        android:id="@+id/variousSliderFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.VariousSliderFragment"
+        android:label="Various Slider" />
 </navigation>

@@ -11,7 +11,8 @@ import androidx.room.RoomDatabase
 import com.development.mydaggerhiltmvvm.BuildConfig
 import com.development.mydaggerhiltmvvm.restService.AllWebServiceCall
 import com.development.mydaggerhiltmvvm.restService.RestInterface
-import com.development.mydaggerhiltmvvm.roomDatabase.MainDatabase
+import com.development.mydaggerhiltmvvm.roomDb.AppDao
+import com.development.mydaggerhiltmvvm.roomDb.AppDatabase
 import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
@@ -84,9 +85,15 @@ class ApplicationModule {
         return AllWebServiceCall()
     }
 
-  /*  @Provides
     @Singleton
-    fun initializeDB(context: Context): MainDatabase {
-        return MainDatabase.getDataseClient(context)
-    }*/
+    @Provides
+    fun getAppDatabase(context: Application): AppDatabase {
+        return AppDatabase.getAppDbInstance(context)
+    }
+
+    @Singleton
+    @Provides
+    fun appDao(appDatabase: AppDatabase): AppDao {
+        return appDatabase.getAppDao()
+    }
 }

@@ -64,4 +64,8 @@
         android:id="@+id/phoneContactListFragment"
         android:icon="@drawable/ic_dashboard"
         android:title="Phone Contacts" />
+    <item
+        android:id="@+id/variousSliderFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Sliders" />
 </menu>

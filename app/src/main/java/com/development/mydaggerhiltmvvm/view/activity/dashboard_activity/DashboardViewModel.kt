@@ -1,28 +1,24 @@
 package com.development.mydaggerhiltmvvm.view.activity.dashboard_activity
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingSource
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.interfaces.WebInterface
 import com.development.mydaggerhiltmvvm.model.FriendsData
 import com.development.mydaggerhiltmvvm.model.FriendsResponse
 import com.development.mydaggerhiltmvvm.restService.AllWebServiceCall
 import com.development.mydaggerhiltmvvm.restService.RestInterface
-import com.development.mydaggerhiltmvvm.roomDatabase.MainDatabase
+import com.development.mydaggerhiltmvvm.roomDb.RoomRepository
 import com.development.mydaggerhiltmvvm.util.NetworkHelper
 import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
 import com.development.mydaggerhiltmvvm.util.common_utils.UtilFile.emailValid
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
-import com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.FriendDetailsFragment
 import com.google.gson.Gson
-import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import org.json.JSONException
 import org.json.JSONObject
@@ -32,7 +28,7 @@ class DashboardViewModel @ViewModelInject constructor(
     private var allWebServiceCall: AllWebServiceCall,
     private val networkHelper: NetworkHelper,
     private val userPref: UserSharedPrefrence
-   /* private val mainDb: MainDatabase*/
+   /* private val repository: RoomRepository*/
 ) : ViewModel(), WebInterface {
 
     private val TAG = DashboardViewModel::class.java.simpleName
@@ -53,9 +49,6 @@ class DashboardViewModel @ViewModelInject constructor(
 
     /*Todo For Dashboard*/
     private var friendResponse = MutableLiveData<FriendsResponse>()
-    private var friendList = MutableLiveData<List<FriendsData>>()
-
-    //var mainDatabase: MainDatabase? = null
 
     var currentPage =  MutableLiveData(1)
     var totalPageCount = 0
@@ -81,6 +74,10 @@ class DashboardViewModel @ViewModelInject constructor(
     fun observeFriendList(): MutableLiveData<FriendsResponse> {
         return friendResponse
     }
+
+   /* fun getAllRecords(): MutableLiveData<List<FriendsData>> {
+        return repository.getAllRecords()
+    }*/
 
     suspend fun getMyFriendList() {
         if (networkHelper.isNetworkConnected()) {
@@ -130,9 +127,8 @@ class DashboardViewModel @ViewModelInject constructor(
                 "getMyFriendList" -> {
                     val response = Gson().fromJson(t.toString(), FriendsResponse::class.java)
                     friendResponse.postValue(response)
-                    friendList.postValue(response.data)
-                /*    viewModelScope.launch {
-                        insertFriendsToDb()
+                 /*   response.data?.forEach {
+                        repository.insertRecord(it)
                     }*/
                 }
             }
@@ -142,12 +138,6 @@ class DashboardViewModel @ViewModelInject constructor(
             baseActivity.cancelProgressDialog()
         }
     }
-
-   /* private suspend fun insertFriendsToDb() {
-        mainDatabase = initializeDB(baseActivity)
-        mainDatabase!!.dao().insertFriendList(friendList)
-        Log.e(TAG,"List : $friendList")
-    }*/
 
     override fun failureSuccess(s: String?) {
         //progressbarVisibility.set(View.GONE)

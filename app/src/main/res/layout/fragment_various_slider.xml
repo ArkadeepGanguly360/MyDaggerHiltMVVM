@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.dashboard_fragment.VariousSliderFragment">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Simple Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.Slider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Set Value Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.Slider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:value="20"
+                android:valueFrom="0"
+                android:valueTo="100"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Step-Step Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.Slider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="5.0"
+                android:value="20"
+                android:valueFrom="0"
+                android:valueTo="100"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="currencyFormat Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/sliderRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="100"
+                style="@style/tooltips"
+                app:values="@array/rangeSlider"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Range Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:values="@array/rangeSlider"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <!--Let’s change the color and shape of the
+            label that shows the value of the slider
+             as you move it left and right.-->
+            <TextView
+                android:text="Color Change Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.Slider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="5.0"
+                android:value="20"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:labelStyle="@style/tooltip"
+                tools:ignore="SpeakableTextPresentCheck"/>
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Shape Change Slider"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:labelStyle="@style/tooltips"
+                app:values="@array/rangeSlider"
+                tools:ignore="SpeakableTextPresentCheck"/>
+
+            <View
+                android:background="#606060"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="35dp"
+                android:layout_height="1dp"/>
+            <!--You can use currencyFormat variable
+            to access the type of currency that you want.-->
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

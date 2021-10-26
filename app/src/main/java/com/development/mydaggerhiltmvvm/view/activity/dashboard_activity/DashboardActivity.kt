@@ -117,6 +117,9 @@ class DashboardActivity : BaseActivity() {
                 R.id.phoneContactListFragment -> {
                     bottomBarVisibility.set(View.GONE)
                 }
+                R.id.variousSliderFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
                     toolbarMenuVisibility.set(View.GONE)
@@ -172,7 +175,8 @@ class DashboardActivity : BaseActivity() {
                 R.id.biometricAuthenticationFragment,
                 R.id.pictureInPictureFragment,
                 R.id.pickContactFragment,
-                R.id.phoneContactListFragment
+                R.id.phoneContactListFragment,
+                R.id.variousSliderFragment
             )
         )
 

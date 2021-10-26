@@ -1,4 +1,4 @@
-package com.development.mydaggerhiltmvvm
+package com.development.mydaggerhiltmvvm.adapter
 
 import android.content.Context
 import android.util.SparseBooleanArray

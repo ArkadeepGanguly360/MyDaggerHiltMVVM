@@ -51,7 +51,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:itemTextColor="@color/bottombar_text_selector"
-            app:menu="@menu/bottom_menu" />
+            app:hideOnScroll="true"
+            app:menu="@menu/bottom_menu"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

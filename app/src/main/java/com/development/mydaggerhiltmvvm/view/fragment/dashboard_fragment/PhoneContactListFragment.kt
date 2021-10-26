@@ -1,28 +1,19 @@
 package com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.development.mydaggerhiltmvvm.PhoneContactListAdapter
 import com.development.mydaggerhiltmvvm.R
-import com.development.mydaggerhiltmvvm.adapter.MyFriendListAdapter
+import com.development.mydaggerhiltmvvm.adapter.PhoneContactListAdapter
 import com.development.mydaggerhiltmvvm.databinding.FragmentPhoneContactListBinding
-import com.development.mydaggerhiltmvvm.databinding.FragmentPickContactBinding
 import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
-import com.development.mydaggerhiltmvvm.model.FriendsData
 import com.development.mydaggerhiltmvvm.model.PhoneContactModel
 import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
 
-class PhoneContactListFragment : BaseFragment() {
+class PhoneContactListFragment  : BaseFragment() {
 
     private lateinit var binding: FragmentPhoneContactListBinding
     var contactList = ArrayList<PhoneContactModel>()
@@ -78,7 +69,7 @@ class PhoneContactListFragment : BaseFragment() {
         }
     }
 
-    private fun getAllPhoneContacts() {
+     private fun getAllPhoneContacts() {
         val phones = requireActivity().contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC")
         while (phones!!.moveToNext()) {
             val name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
@@ -87,7 +78,6 @@ class PhoneContactListFragment : BaseFragment() {
 
             val contactModel = PhoneContactModel(name,phoneNumber,photo)
             contactList!!.add(contactModel)
-            Log.d("name>>", name + "  " + phoneNumber)
         }
         phones.close()
     }
