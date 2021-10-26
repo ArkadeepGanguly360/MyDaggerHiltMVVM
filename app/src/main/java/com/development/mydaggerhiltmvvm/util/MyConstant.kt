@@ -43,11 +43,21 @@ class MyConstant {
             Manifest.permission.ACCESS_FINE_LOCATION
         )
 
+        val READ_CONTACT_PERMISSION = listOf(
+            Manifest.permission.READ_CONTACTS
+        )
+
+        val CAMERA_PERMISSION = listOf(
+            Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+
         val ALL_PERMISSION = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_CONTACTS
         )
     }
 
@@ -84,5 +94,11 @@ class MyConstant {
         const val LIVE_EVENT = "LIVE EVENT"
         const val MESSAGE = "message"
         const val BROADCASTING = "Broadcasting"
+    }
+
+    object CONNECTIONS {
+        const val HOOKUP = "Hookup"
+        const val DATING = "Dating"
+        const val FRIEND = "Friend"
     }
 }

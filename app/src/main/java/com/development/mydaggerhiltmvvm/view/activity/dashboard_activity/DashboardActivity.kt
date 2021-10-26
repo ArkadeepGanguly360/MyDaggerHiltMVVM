@@ -99,6 +99,24 @@ class DashboardActivity : BaseActivity() {
                 R.id.barcodeScannerFragment -> {
                     bottomBarVisibility.set(View.GONE)
                 }
+                R.id.customRadioButtonFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.differentShapedImageviewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.biometricAuthenticationFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.pictureInPictureFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.pickContactFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.phoneContactListFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
                     toolbarMenuVisibility.set(View.GONE)
@@ -148,7 +166,13 @@ class DashboardActivity : BaseActivity() {
                 R.id.emojiKeyboardLikeWhatsAppFragment,
                 R.id.swipeVideosLikeTiktokFragment,
                 R.id.swipeImagesLikeTinderFragment,
-                R.id.barcodeScannerFragment
+                R.id.barcodeScannerFragment,
+                R.id.customRadioButtonFragment,
+                R.id.differentShapedImageviewFragment,
+                R.id.biometricAuthenticationFragment,
+                R.id.pictureInPictureFragment,
+                R.id.pickContactFragment,
+                R.id.phoneContactListFragment
             )
         )
 

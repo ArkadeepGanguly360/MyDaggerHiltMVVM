@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.development.mydaggerhiltmvvm.R" />
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="phno"
+            type="String" />
+
+        <variable
+            name="image"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
+            bind:imageUrl="@{image}"
+            bind:placeHolder="@{R.drawable.user_profile}"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img"
+            android:layout_marginStart="10dp"
+            android:text="@{name}"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_phno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            android:layout_marginTop="5dp"
+            android:text="@{phno}"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phno"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:background="@color/black"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -41,7 +41,7 @@ class ProfileFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
-            listPermission.addAll(MyConstant.APP_PERMISSION.ALL_PERMISSION)
+            listPermission.addAll(MyConstant.APP_PERMISSION.CAMERA_PERMISSION)
         else
             listPermission.addAll(MyConstant.APP_PERMISSION.ABOVE_API_29_PERMISSION)
     }

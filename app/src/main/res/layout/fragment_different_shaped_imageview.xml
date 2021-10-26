@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.DifferentShapedImageviewFragment" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.dashboard_fragment.DifferentShapedImageviewFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <!--Circle - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Circle"/>
+
+            <!--Circle - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
+                app:strokeWidth="5dp"
+                app:strokeColor="@color/black"/>
+
+            <!--All Rounded Corners - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"/>
+
+            <!--All Rounded Corners - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+                app:strokeColor="@color/black"
+                app:strokeWidth="5dp"/>
+
+            <!--All Cut Corners - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut"/>
+
+            <!--All Cut Corners - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut"
+                app:strokeColor="@color/black"
+                app:strokeWidth="5dp"/>
+
+            <!--All Cut Corners Square- Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut_Square" />
+
+            <!--All Cut Corners Square- Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut_Square"
+                app:strokeWidth="5dp"
+                app:strokeColor="@color/black"/>
+
+            <!--Top Right Rounded Corner - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded_Top_Right"/>
+
+            <!--Top Right Rounded Corner - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded_Top_Right"
+                app:strokeColor="@color/black"
+                app:strokeWidth="5dp"/>
+
+            <!--Top Right, Bottom Left Rounded Corners - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded_Top_Right_Botom_Left"/>
+
+            <!--Top Right, Bottom Left Rounded Corners - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded_Top_Right_Botom_Left"
+                app:strokeWidth="5dp"
+                app:strokeColor="@color/black"/>
+
+            <!--Top Right, Bottom Left Cut Corners - Without Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut_Top_Right_Botom_Left"/>
+
+            <!--Top Right, Bottom Left Cut Corners - With Border-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"
+                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Cut_Top_Right_Botom_Left"
+                app:strokeColor="@color/black"
+                app:strokeWidth="5dp"/>
+
+            <!--Apply programmatically-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableIv"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/abc"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

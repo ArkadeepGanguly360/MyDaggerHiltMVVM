@@ -78,4 +78,28 @@
         android:id="@+id/barcodeScannerFragment"
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.BarcodeScannerFragment"
         android:label="Barcode Scanner" />
+    <fragment
+        android:id="@+id/customRadioButtonFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.CustomRadioButtonFragment"
+        android:label="Custom RadioButton" />
+    <fragment
+        android:id="@+id/differentShapedImageviewFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.DifferentShapedImageviewFragment"
+        android:label="DifferentShapedImageview" />
+    <fragment
+        android:id="@+id/biometricAuthenticationFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.BiometricAuthenticationFragment"
+        android:label="Biometric Authentication" />
+    <fragment
+        android:id="@+id/pictureInPictureFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.PictureInPictureFragment"
+        android:label="PictureInPicture" />
+    <fragment
+        android:id="@+id/pickContactFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.PickContactFragment"
+        android:label="Pick Contact" />
+    <fragment
+        android:id="@+id/phoneContactListFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.PhoneContactListFragment"
+        android:label="Phone Contacts" />
 </navigation>

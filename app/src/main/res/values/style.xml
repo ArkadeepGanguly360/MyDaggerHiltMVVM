@@ -12,4 +12,41 @@
         <item name="boxCornerRadiusBottomEnd">@dimen/dimens_20dp</item>
         <!--<item name="boxStrokeColor">@color/black</item>-->
     </style>
+
+    <style name="ImageStyle_Circle">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item> <!--possible values are rounded, cut-->
+    </style>
+
+    <style name="ImageStyle_Corners_Rounded">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ImageStyle_Corners_Cut">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="ImageStyle_Corners_Cut_Square">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="ImageStyle_Corners_Rounded_Top_Right">
+        <item name="cornerSizeTopRight">60%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ImageStyle_Corners_Rounded_Top_Right_Botom_Left">
+        <item name="cornerSizeTopRight">60%</item>
+        <item name="cornerSizeBottomLeft">60%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ImageStyle_Corners_Cut_Top_Right_Botom_Left">
+        <item name="cornerSizeTopRight">50%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+        <item name="cornerFamily">cut</item>
+    </style>
 </resources>

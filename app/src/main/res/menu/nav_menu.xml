@@ -40,4 +40,28 @@
         android:id="@+id/barcodeScannerFragment"
         android:icon="@drawable/ic_dashboard"
         android:title="Barcode Scanner" />
+    <item
+        android:id="@+id/customRadioButtonFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Custom RadioButton" />
+    <item
+        android:id="@+id/differentShapedImageviewFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="DifferentShapedImage" />
+    <item
+        android:id="@+id/biometricAuthenticationFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Biometric Authentication" />
+    <item
+        android:id="@+id/pictureInPictureFragment"
+        android:icon="@drawable/ic_map"
+        android:title="PictureInPicture" />
+    <item
+        android:id="@+id/pickContactFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Pick Contact" />
+    <item
+        android:id="@+id/phoneContactListFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Phone Contacts" />
 </menu>
