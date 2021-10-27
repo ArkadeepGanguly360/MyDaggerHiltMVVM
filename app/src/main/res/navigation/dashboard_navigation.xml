@@ -114,4 +114,20 @@
         android:id="@+id/variousSliderFragment"
         android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.VariousSliderFragment"
         android:label="Various Slider" />
+    <fragment
+        android:id="@+id/autoImageSliderFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.AutoImageSliderFragment"
+        android:label="AutoImageSlider" />
+    <fragment
+        android:id="@+id/whatsAppStoryViewFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.WhatsAppStoryViewFragment"
+        android:label="WhatsApp StoryView" >
+        <action
+            android:id="@+id/action_whatsAppStoryViewFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

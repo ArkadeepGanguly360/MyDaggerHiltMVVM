@@ -34,6 +34,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".view.activity.PictureInPictureShowActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|orientation"
             android:launchMode="singleTask"
@@ -75,6 +76,7 @@
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location" />
+
         <service
             android:name=".fcm.MyFirebaseMessaging"
             android:exported="false">

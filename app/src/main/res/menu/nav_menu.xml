@@ -68,4 +68,12 @@
         android:id="@+id/variousSliderFragment"
         android:icon="@drawable/ic_map"
         android:title="Sliders" />
+    <item
+        android:id="@+id/autoImageSliderFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Auto ImageSlider" />
+    <item
+        android:id="@+id/whatsAppStoryViewFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="WhatsApp StoryView" />
 </menu>

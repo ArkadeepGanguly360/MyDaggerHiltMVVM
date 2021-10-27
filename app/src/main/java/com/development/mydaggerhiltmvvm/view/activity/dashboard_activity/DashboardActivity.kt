@@ -120,13 +120,18 @@ class DashboardActivity : BaseActivity() {
                 R.id.variousSliderFragment -> {
                     bottomBarVisibility.set(View.GONE)
                 }
+                R.id.autoImageSliderFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.whatsAppStoryViewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
                     toolbarMenuVisibility.set(View.GONE)
                 }
             }
         }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,7 +181,9 @@ class DashboardActivity : BaseActivity() {
                 R.id.pictureInPictureFragment,
                 R.id.pickContactFragment,
                 R.id.phoneContactListFragment,
-                R.id.variousSliderFragment
+                R.id.variousSliderFragment,
+                R.id.autoImageSliderFragment,
+                R.id.whatsAppStoryViewFragment
             )
         )
 

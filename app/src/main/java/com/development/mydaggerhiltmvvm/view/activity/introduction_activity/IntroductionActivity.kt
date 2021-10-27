@@ -8,6 +8,7 @@ import com.development.mydaggerhiltmvvm.adapter.ViewPagerAdapter
 import com.development.mydaggerhiltmvvm.databinding.ActivityIntroductionBinding
 import com.development.mydaggerhiltmvvm.databinding.ActivitySplashBinding
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
+import com.google.android.material.tabs.TabLayoutMediator
 
 class IntroductionActivity : BaseActivity() {
 
@@ -30,5 +31,8 @@ class IntroductionActivity : BaseActivity() {
         )
 
         binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tab, binding.viewPager) { tab, position ->
+        }.attach()
     }
 }

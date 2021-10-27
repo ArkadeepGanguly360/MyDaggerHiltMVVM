@@ -14,7 +14,6 @@ import com.development.mydaggerhiltmvvm.view.activity.introduction_activity.Intr
 import com.development.mydaggerhiltmvvm.view.activity.login_activity.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding
@@ -29,7 +28,9 @@ class SplashActivity : BaseActivity() {
                 nextActivity(DashboardActivity::class.java, null, true)
             }, 1000)
         } else {
-            nextActivity(IntroductionActivity::class.java, null, true)
+            Handler(Looper.getMainLooper()).postDelayed({
+                nextActivity(IntroductionActivity::class.java, null, true)
+            }, 2000)
         }
     }
 }
