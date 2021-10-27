@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <import type="com.development.mydaggerhiltmvvm.R" />
 
         <variable
@@ -16,40 +17,35 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+            bind:imageUrl="@{image}"
+            bind:placeHolder="@{R.drawable.user_profile}" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                bind:imageUrl="@{image}"
-                bind:placeHolder="@{R.drawable.user_profile}"
-                app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
-                android:scaleType="fitXY"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/img"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="40dp"
-                android:text="@{title}"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:textColor="@color/white"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="@{title}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

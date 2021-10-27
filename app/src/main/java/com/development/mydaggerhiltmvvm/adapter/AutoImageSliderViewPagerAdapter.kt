@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.AutoImageSliderItemBinding
+import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
 import com.development.mydaggerhiltmvvm.model.AutoImageSliderData
 
 
 class AutoImageSliderViewPagerAdapter(
     val context: Context,
-    val list: ArrayList<AutoImageSliderData>
+    val list: ArrayList<AutoImageSliderData>,
+    val listener: RecyclerViewItemOnClickListener
 ) :
     RecyclerView.Adapter<AutoImageSliderViewPagerAdapter.ViewHolder>() {
 
@@ -52,6 +54,10 @@ class AutoImageSliderViewPagerAdapter(
         holder.rowBinding.apply {
             image = item.image
             title = item.title
+
+            cons.setOnClickListener{
+                listener.onViewClick(position)
+            }
         }
     }
 

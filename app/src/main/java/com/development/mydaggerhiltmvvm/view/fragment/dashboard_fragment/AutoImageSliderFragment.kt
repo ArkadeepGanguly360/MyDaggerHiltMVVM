@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.adapter.AutoImageSliderViewPagerAdapter
+import com.development.mydaggerhiltmvvm.adapter.MyFriendListAdapter
 import com.development.mydaggerhiltmvvm.databinding.FragmentAutoImageSliderBinding
 import com.development.mydaggerhiltmvvm.databinding.FragmentVariousIntentBinding
+import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
 import com.development.mydaggerhiltmvvm.model.AutoImageSliderData
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -57,8 +61,7 @@ class AutoImageSliderFragment : BaseFragment() {
             )
         )
 
-        autoImageSliderViewPagerAdapter = AutoImageSliderViewPagerAdapter(requireActivity(), sliderList)
-        binding.viewpager2.adapter = autoImageSliderViewPagerAdapter
+        initViewPagerAdapter()
 
         //Todo Auto Slider Timer
         val timer = Timer()
@@ -72,14 +75,34 @@ class AutoImageSliderFragment : BaseFragment() {
         }.attach()
     }
 
+    private fun initViewPagerAdapter() {
+        autoImageSliderViewPagerAdapter = AutoImageSliderViewPagerAdapter(
+            requireActivity(),
+            sliderList,
+            object : RecyclerViewItemOnClickListener {
+                override fun onViewClick(position: Int) {
+                    goToNextFragment(
+                        R.id.action_autoImageSliderFragment_to_dashboardFragment,
+                        null
+                    )
+                }
+            })
+
+        binding.viewpager2.apply {
+            adapter = autoImageSliderViewPagerAdapter
+        }
+    }
+
     inner class AutoSliderTimer : TimerTask() {
         override fun run() {
-            requireActivity().runOnUiThread(Runnable {
-                if (binding.viewpager2.currentItem < sliderList.size - 1) {
-                    binding.viewpager2.currentItem = binding.viewpager2.currentItem + 1
-                } else
-                    binding.viewpager2.currentItem = 0
-            })
+            if (isAdded && activity != null) {
+                requireActivity().runOnUiThread {
+                    if (binding.viewpager2.currentItem < sliderList.size - 1) {
+                        binding.viewpager2.currentItem = binding.viewpager2.currentItem + 1
+                    } else
+                        binding.viewpager2.currentItem = 0
+                }
+            }
         }
     }
 }
