@@ -12,4 +12,10 @@
     <color name="red">#F44336</color>
     <color name="colorPink">#DB00FF</color>
     <color name="colorBlue">#17A3F2</color>
+
+    <color name="progress_primary">@color/white</color>
+    <color name="progress_secondary">@color/gray_scale</color>
+    <color name="progress_max_active">@color/white</color>
+
+    <color name="gray_scale">#8affffff</color>
 </resources>

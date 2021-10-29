@@ -101,4 +101,16 @@ class MyConstant {
         const val DATING = "Dating"
         const val FRIEND = "Friend"
     }
+
+    object FIREBASE_CRED {
+        const val API_KEY = "AIzaSyBBAemyKyl3lF5s3DGkc8_FhPj5i8X3llE"
+        const val APPLICATION_ID = "1:113195329321:web:cad65f64467ad1b509b938"
+        const val DATABASE_URL = "https://tonal-volt-300215-default-rtdb.firebaseio.com"
+        const val STORAGE_BUCKET_URL = "gs://tonal-volt-300215.appspot.com"
+        const val APP_NAME = "My First Project"
+        const val COLLECTION_USER = "users"
+        const val COLLECTION_CHAT = "chats"
+        const val GOOGLE_FCM_KEY =
+            "AAAAGlr3pyk:APA91bH--18MUEVULWoStiLPH1NM19rkVcQPZt35y8goRuFgvXeT07zNcJQT9kSiVUNP_qaIrurEd5iNibKSQPW3N9pMejibkkBCTxTNCcrLpJza36PjXK7w48R08eok4NyUjNPRAOVR"
+    }
 }

@@ -5,6 +5,9 @@
 
     <data>
         <import type="com.development.mydaggerhiltmvvm.R" />
+
+        <import type="android.view.View" />
+
         <variable
             name="name"
             type="String" />
@@ -16,6 +19,14 @@
         <variable
             name="image"
             type="String" />
+
+        <variable
+            name="isVisible"
+            type="Boolean" />
+
+        <variable
+            name="isChecked"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +43,15 @@
             app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
             bind:imageUrl="@{image}"
             bind:placeHolder="@{R.drawable.user_profile}"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_tick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img"
+            app:layout_constraintEnd_toEndOf="@+id/img"
+            android:background="@drawable/ic_green_tick"
+            android:visibility="@{isVisible?View.VISIBLE:View.GONE}"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_name"
@@ -62,6 +82,17 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_phno"
             android:layout_marginTop="@dimen/dimens_10dp"
             android:background="@color/black"/>
+
+       <!-- <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/check"
+            android:layout_width="@dimen/dimens_25dp"
+            android:layout_height="@dimen/dimens_25dp"
+            android:layout_marginEnd="@dimen/dimens_5dp"
+            android:checked="@{isChecked}"
+            android:button="@drawable/nw_custom_checkbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:useMaterialThemeColors="false"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

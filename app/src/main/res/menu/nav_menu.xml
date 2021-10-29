@@ -76,4 +76,8 @@
         android:id="@+id/whatsAppStoryViewFragment"
         android:icon="@drawable/ic_dashboard"
         android:title="WhatsApp StoryView" />
+    <item
+        android:id="@+id/instagramSuggestionViewpage2Fragment"
+        android:icon="@drawable/ic_map"
+        android:title="Instagram Suggestion" />
 </menu>

@@ -2,13 +2,14 @@ package com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment
 
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.adapter.PhoneContactListAdapter
 import com.development.mydaggerhiltmvvm.databinding.FragmentPhoneContactListBinding
-import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
+import com.development.mydaggerhiltmvvm.interfaces.OnCheckedAutoCompleteItemClicked
 import com.development.mydaggerhiltmvvm.model.PhoneContactModel
 import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
@@ -18,6 +19,8 @@ class PhoneContactListFragment  : BaseFragment() {
     private lateinit var binding: FragmentPhoneContactListBinding
     var contactList = ArrayList<PhoneContactModel>()
     private lateinit var phoneContactListAdapter: PhoneContactListAdapter
+
+    var list = ArrayList<String>()
 
     //Todo kotlin permission
     private var listPermission = java.util.ArrayList<String>()
@@ -58,9 +61,16 @@ class PhoneContactListFragment  : BaseFragment() {
         phoneContactListAdapter = PhoneContactListAdapter(
             requireActivity(),
             contactList,
-            object : RecyclerViewItemOnClickListener {
-                override fun onViewClick(position: Int) {
+            object : OnCheckedAutoCompleteItemClicked {
+                override fun onIemClicked(position: Int?, icChecked: Boolean?) {
+                    if(icChecked!!){
+                        list.add(contactList[position!!].name!!)
+                    }
+                    else {
+                        list.remove(contactList[position!!].name!!)
+                    }
 
+                    Log.e("Contact","ContactList : $list")
                 }
             })
 

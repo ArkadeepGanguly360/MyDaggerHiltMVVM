@@ -1,14 +1,11 @@
 package com.development.mydaggerhiltmvvm.view.activity.dashboard_activity
 
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.core.os.postDelayed
 import androidx.core.view.GravityCompat
 import androidx.databinding.ObservableField
@@ -21,11 +18,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.ActivityDashboardBinding
+import com.development.mydaggerhiltmvvm.util.MyConstant
 import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.toolbar_main.*
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -40,6 +40,12 @@ class DashboardActivity : BaseActivity() {
     private var backPressedOnce = false
 
     private val requestCodeCameraPermission = 1001
+
+    // Todo Firebase Chat
+    var firebaseDatabase: FirebaseDatabase? = null
+    var onlineDataBaseRef: DatabaseReference? = null
+    var chatDataBaseRef: DatabaseReference? = null
+    var storageReference: StorageReference? = null
 
     val toolbarVisibility = ObservableField(View.VISIBLE)
     val bottomBarVisibility = ObservableField(View.VISIBLE)
@@ -68,6 +74,8 @@ class DashboardActivity : BaseActivity() {
                 R.id.profileFragment -> {
                 }
                 R.id.notificationFragment -> {
+                }
+                R.id.chatFragment -> {
                 }
                 R.id.singleMultipleSelectAutoCompleteTextViewFragment -> {
                     bottomBarVisibility.set(View.GONE)
@@ -126,6 +134,9 @@ class DashboardActivity : BaseActivity() {
                 R.id.whatsAppStoryViewFragment -> {
                     bottomBarVisibility.set(View.GONE)
                 }
+                R.id.instagramSuggestionViewpage2Fragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
                     toolbarMenuVisibility.set(View.GONE)
@@ -140,7 +151,7 @@ class DashboardActivity : BaseActivity() {
         dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         dashboardViewModel.initActivity(this, this)
         initNavController()
-
+        firebaseChatSetup()
         binding.mainContent.toolbarLayout.imgToolbarMenu.onClick()
         binding.mainContent.toolbarLayout.imgToolbarBack.onClick()
         binding.mainContent.toolbarLayout.imgToolbarNotification.onClick()
@@ -183,7 +194,9 @@ class DashboardActivity : BaseActivity() {
                 R.id.phoneContactListFragment,
                 R.id.variousSliderFragment,
                 R.id.autoImageSliderFragment,
-                R.id.whatsAppStoryViewFragment
+                R.id.whatsAppStoryViewFragment,
+                R.id.instagramSuggestionViewpage2Fragment,
+                R.id.chatFragment
             )
         )
 
@@ -226,8 +239,8 @@ class DashboardActivity : BaseActivity() {
                     navController.popBackStack()
                 }
                 binding.mainContent.toolbarLayout.imgToolbarNotification.id -> {
-                     navController.navigate(R.id.notificationFragment)
-                  /*  createAlertDialog("Alert!", "Please confirm to Logout!", "Yes", "No") {
+                    navController.navigate(R.id.notificationFragment)
+                    /*  createAlertDialog("Alert!", "Please confirm to Logout!", "Yes", "No") {
                         true
                     }*/
                 }
@@ -276,8 +289,26 @@ class DashboardActivity : BaseActivity() {
                 navController.navigate(R.id.barcodeScannerFragment)
             }
             else {
-                Toast.makeText(this,"Permission Denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    //Todo Firebase Chat Setup
+    private fun firebaseChatSetup() {
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        val firebaseStorage = FirebaseStorage.getInstance()
+        storageReference = firebaseStorage.reference
+        onlineDataBaseRef = firebaseDatabase!!.getReference(MyConstant.FIREBASE_CRED.COLLECTION_USER)
+        chatDataBaseRef = firebaseDatabase!!.getReference(MyConstant.FIREBASE_CRED.COLLECTION_CHAT)
+        changeUserOnlineStatus(true)
+    }
+
+    private fun changeUserOnlineStatus(status: Boolean) {
+        if (userPref.getUserData() != null) {
+            val onlineMap = HashMap<String, Boolean>()
+            onlineMap["isOnline"] = status
+            onlineDataBaseRef!!.child(userPref.getUserData()!!._id).setValue(onlineMap)
         }
     }
 }

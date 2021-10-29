@@ -104,6 +104,10 @@ dependencies {
     /*Todo Firebase Push Notification*/
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
 
+    /*Todo Firebase Database & Storage*/
+    implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
+
     /*Todo Google Emoji Keyboard*/
     implementation 'com.vanniktech:emoji-google:0.8.0'
 

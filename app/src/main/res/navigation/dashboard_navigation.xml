@@ -138,4 +138,12 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/instagramSuggestionViewpage2Fragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.InstagramSuggestionViewpage2Fragment"
+        android:label="Instagram Suggestion" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.ChatFragment"
+        android:label="ChatFragment" />
 </navigation>

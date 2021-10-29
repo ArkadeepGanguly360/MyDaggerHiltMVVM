@@ -1,5 +1,6 @@
 package com.development.mydaggerhiltmvvm.model
 
 data class WhatsAppStoryData(
-    val image: String
+    val mediaUrl: String,
+    val mimeType: String
 )
