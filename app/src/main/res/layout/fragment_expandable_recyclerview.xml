@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="fragment"
+            type="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.ExpandableRecyclerviewFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

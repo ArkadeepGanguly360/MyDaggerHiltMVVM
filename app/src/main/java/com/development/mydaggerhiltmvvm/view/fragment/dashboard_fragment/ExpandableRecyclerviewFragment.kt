@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.development.mydaggerhiltmvvm.R
+import com.development.mydaggerhiltmvvm.databinding.FragmentAutoImageSliderBinding
+import com.development.mydaggerhiltmvvm.databinding.FragmentExpandableRecyclerviewBinding
+import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
 
-class ExpandableRecyclerviewFragment : Fragment() {
+class ExpandableRecyclerviewFragment : BaseFragment() {
+
+    private lateinit var binding: FragmentExpandableRecyclerviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +23,8 @@ class ExpandableRecyclerviewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_expandable_recyclerview, container, false)
+        binding = putContentView(R.layout.fragment_expandable_recyclerview, layoutInflater, container)
+        binding.fragment = this
+        return binding.root
     }
 }
