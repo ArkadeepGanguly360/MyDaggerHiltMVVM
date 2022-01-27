@@ -1,11 +1,15 @@
 package com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.palette.graphics.Palette
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.adapter.ChatedUserAdapter
 import com.development.mydaggerhiltmvvm.adapter.MyFriendListAdapter
@@ -13,8 +17,10 @@ import com.development.mydaggerhiltmvvm.databinding.FragmentChatBinding
 import com.development.mydaggerhiltmvvm.interfaces.RecyclerViewItemOnClickListener
 import com.development.mydaggerhiltmvvm.model.FriendsData
 import com.development.mydaggerhiltmvvm.model.FriendsResponse
+import com.development.mydaggerhiltmvvm.view.activity.base_activity.BaseActivity
 import com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardViewModel
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
+import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

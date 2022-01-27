@@ -80,4 +80,24 @@
         android:id="@+id/instagramSuggestionViewpage2Fragment"
         android:icon="@drawable/ic_map"
         android:title="Instagram Suggestion" />
+    <item
+        android:id="@+id/expandableRecyclerviewFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Expandable Recyclerview" />
+    <item
+        android:id="@+id/staggeredGridviewFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Staggered GiridView" />
+    <item
+        android:id="@+id/whatsappCircularStatusFragment"
+        android:icon="@drawable/ic_map"
+        android:title="WhatsappCircularStatus" />
+    <item
+        android:id="@+id/lottieProgressDialogFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Lottie Progress Dialog" />
+    <item
+        android:id="@+id/tutorialTooltipFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Tutorial Tooltip" />
 </menu>

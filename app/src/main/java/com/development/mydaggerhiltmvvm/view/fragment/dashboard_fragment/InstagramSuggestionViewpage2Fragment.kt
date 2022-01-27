@@ -81,7 +81,7 @@ class InstagramSuggestionViewpage2Fragment : BaseFragment() {
             object : RecyclerViewItemOnClickListener {
                 override fun onViewClick(position: Int) {
                     goToNextFragment(
-                        R.id.action_autoImageSliderFragment_to_dashboardFragment,
+                        R.id.action_instagramSuggestionViewpage2Fragment_to_dashboardFragment,
                         null
                     )
                 }

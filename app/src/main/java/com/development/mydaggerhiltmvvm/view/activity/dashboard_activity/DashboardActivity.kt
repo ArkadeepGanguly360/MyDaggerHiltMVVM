@@ -137,9 +137,24 @@ class DashboardActivity : BaseActivity() {
                 R.id.instagramSuggestionViewpage2Fragment -> {
                     bottomBarVisibility.set(View.GONE)
                 }
+                R.id.expandableRecyclerviewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.staggeredGridviewFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.whatsappCircularStatusFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
                 R.id.friendDetailsFragment -> {
                     toolbarBackVisibility.set(View.VISIBLE)
                     toolbarMenuVisibility.set(View.GONE)
+                }
+                R.id.lottieProgressDialogFragment -> {
+                    bottomBarVisibility.set(View.GONE)
+                }
+                R.id.tutorialTooltipFragment -> {
+                    bottomBarVisibility.set(View.GONE)
                 }
             }
         }
@@ -196,7 +211,12 @@ class DashboardActivity : BaseActivity() {
                 R.id.autoImageSliderFragment,
                 R.id.whatsAppStoryViewFragment,
                 R.id.instagramSuggestionViewpage2Fragment,
-                R.id.chatFragment
+                R.id.chatFragment,
+                R.id.expandableRecyclerviewFragment,
+                R.id.staggeredGridviewFragment,
+                R.id.whatsappCircularStatusFragment,
+                R.id.lottieProgressDialogFragment,
+                R.id.tutorialTooltipFragment
             )
         )
 

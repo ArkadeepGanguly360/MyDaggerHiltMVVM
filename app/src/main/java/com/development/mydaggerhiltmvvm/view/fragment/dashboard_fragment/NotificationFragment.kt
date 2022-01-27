@@ -1,11 +1,10 @@
 package com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment
 
 import android.app.*
-import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,8 +13,9 @@ import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.ObservableField
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.FragmentNotificationBinding
 import com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardActivity
@@ -54,7 +54,8 @@ class NotificationFragment : BaseFragment() {
         this.setOnClickListener {
             when (it.id) {
                 binding.btNotification.id -> {
-                    addNotification()
+                    //addNotification()
+                    inboxStyle()
                 }
             }
         }
@@ -76,6 +77,8 @@ class NotificationFragment : BaseFragment() {
             getPendingIntent(randId, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
+        val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         val notificationBuilder =
             NotificationCompat.Builder(requireActivity(), notificationChannelId).apply {
                 setContentTitle("Example")
@@ -84,16 +87,26 @@ class NotificationFragment : BaseFragment() {
                 setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 setContentIntent(resultPendingIntent)
                 setContentInfo("Hello")
-                setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.pic))
-                setStyle(
-                    NotificationCompat.BigPictureStyle()
-                        .bigPicture(BitmapFactory.decodeResource(resources, R.drawable.pic))
-                        .bigLargeIcon(null)
-                )
-                setStyle(
-                    NotificationCompat.BigTextStyle()
-                        .bigText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-                )
+
+                setSmallIcon(R.drawable.pic);
+                setSound(soundUri)
+
+                /* TODO For show downloading progress*/
+                /* setContentText("Download progressbar")
+                 setContentTitle("Progress")
+                 setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.pic))*/
+
+
+                /* setProgress(100, 0, true)*/
+                /* setStyle(
+                     NotificationCompat.BigPictureStyle()
+                         .bigPicture(BitmapFactory.decodeResource(resources, R.drawable.pic))
+                         .bigLargeIcon(null)
+                 )
+                 setStyle(
+                     NotificationCompat.BigTextStyle()
+                         .bigText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+                 )*/
                 color = ContextCompat.getColor(requireActivity(), R.color.red)
                 setLights(Color.RED, 1000, 300)
                 setDefaults(Notification.DEFAULT_VIBRATE)
@@ -132,5 +145,37 @@ class NotificationFragment : BaseFragment() {
     companion object {
         private const val CHANNEL_NAME = "Default"
         private const val CHANNEL_DESC = "Default Messaging"
+    }
+
+    private fun inboxStyle() {
+        val randId = gen()
+        val notificationBuilder =
+            NotificationCompat.Builder(requireActivity(), notificationChannelId).apply {
+            setContentTitle("Picture Download")
+            setContentText("Download in progress")
+            setSmallIcon(R.drawable.who)
+                priority = NotificationCompat.PRIORITY_LOW
+        }
+
+        val PROGRESS_MAX = 100
+        val PROGRESS_CURRENT = 0
+        NotificationManagerCompat.from(requireActivity()).apply {
+            // Issue the initial notification with zero progress
+            notificationBuilder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false)
+            notify(randId, notificationBuilder.build())
+
+
+            // Do the job here that tracks the progress.
+            // Usually, this should be in a
+            // worker thread
+            // To show progress, update PROGRESS_CURRENT and update the notification with:
+            // builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+            // notificationManager.notify(notificationId, builder.build());
+
+            // When done, update the notification one more time to remove the progress bar
+            notificationBuilder.setContentText("Download complete")
+                .setProgress(0, 0, false)
+            notify(randId, notificationBuilder.build())
+        }
     }
 }

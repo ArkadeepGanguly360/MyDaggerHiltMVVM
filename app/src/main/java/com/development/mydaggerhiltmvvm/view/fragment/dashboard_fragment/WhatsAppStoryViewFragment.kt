@@ -19,6 +19,7 @@ import com.bumptech.glide.request.target.Target
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.databinding.FragmentWhatsAppStoryViewBinding
 import com.development.mydaggerhiltmvvm.model.WhatsAppStoryData
+import com.development.mydaggerhiltmvvm.model.WhatsappStatus
 import com.development.mydaggerhiltmvvm.view.fragment.base_fragment.BaseFragment
 import com.squareup.picasso.Picasso
 import jp.shts.android.storiesprogressview.StoriesProgressView
@@ -33,6 +34,7 @@ class WhatsAppStoryViewFragment : BaseFragment(), StoriesProgressView.StoriesLis
     private var counter = 0
     var pressTime = 0L
     var limit = 500L
+    var statusList = java.util.ArrayList<WhatsappStatus>()
 
     private val onTouchListener: View.OnTouchListener = object : View.OnTouchListener {
         override fun onTouch(v: View?, event: MotionEvent): Boolean {
@@ -73,6 +75,7 @@ class WhatsAppStoryViewFragment : BaseFragment(), StoriesProgressView.StoriesLis
         binding.stories.setStoriesListener(this)
 
         for (i in 0 until storyList.size) {
+            statusList[i].isSeen = true
             if (storyList[i].mimeType.contains("video")) {
                 mediaPlayerArrayList.add(getVideoView(i)!!)
             } else if (storyList[i].mimeType.contains("image")) {
@@ -92,28 +95,43 @@ class WhatsAppStoryViewFragment : BaseFragment(), StoriesProgressView.StoriesLis
     }
 
     private fun getStoryList() {
+
+        statusList.add(WhatsappStatus(false))
+        statusList.add(WhatsappStatus(false))
+        statusList.add(WhatsappStatus(false))
+        statusList.add(WhatsappStatus(false))
+        statusList.add(WhatsappStatus(false))
+
         storyList.add(
             WhatsAppStoryData(
                 "https://images.immediate.co.uk/production/volatile/sites/3/2019/04/Avengers-Endgame-Banner-2-de7cf60.jpg?quality=90&resize=620,413",
-                "image/jpg"
+                "image/jpg",
+                false,
+                statusList
             )
         )
         storyList.add(
             WhatsAppStoryData(
                 "https://img.cinemablend.com/filter:scale/quill/3/7/0/0/8/e/37008e36e98cd75101cf1347396eac8534871a19.jpg?mw=600",
-                "image/jpg"
+                "image/jpg",
+                false,
+                statusList
             )
         )
         storyList.add(
             WhatsAppStoryData(
                 "https://www.adgully.com/img/800/201711/spider-man-homecoming-banner.jpg",
-                "image/jpg"
+                "image/jpg",
+                false,
+                statusList
             )
         )
         storyList.add(
             WhatsAppStoryData(
                 "https://heavenplusone-api.dedicateddevelopers.us/uploads/memorial/media_1627550774674_VID-20210719-WA0007.mp4",
-                "video/mp4"
+                "video/mp4",
+                false,
+                statusList
             )
         )
     }

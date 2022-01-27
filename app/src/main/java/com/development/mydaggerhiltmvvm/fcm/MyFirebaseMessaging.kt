@@ -12,7 +12,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.development.mydaggerhiltmvvm.R
 import com.development.mydaggerhiltmvvm.util.MyConstant
-import com.development.mydaggerhiltmvvm.util.UserSharedPrefrence
 import com.development.mydaggerhiltmvvm.view.activity.dashboard_activity.DashboardActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -31,8 +30,8 @@ class MyFirebaseMessaging : FirebaseMessagingService() {
     }
 
     private fun sendNotification(
-            notification: RemoteMessage.Notification?,
-            data: Map<String, String>
+        notification: RemoteMessage.Notification?,
+        data: Map<String, String>
     ) {
         val bundle = Bundle()
         bundle.putString(MyConstant.NOTIFICATION_TYPE.NOTIFY_TYPE, data["notification_type"])
@@ -95,9 +94,9 @@ class MyFirebaseMessaging : FirebaseMessagingService() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                    notificationChannelId,
-                    CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_DEFAULT
+                notificationChannelId,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
             )
             channel.description = CHANNEL_DESC
             channel.setShowBadge(true)

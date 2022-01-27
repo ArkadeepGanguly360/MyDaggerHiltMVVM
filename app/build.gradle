@@ -45,6 +45,7 @@ android {
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.work:work-runtime:2.5.0'
     def nav_version = '2.3.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -138,6 +139,11 @@ dependencies {
 
     /*Todo WhatsApp StoryView*/
     implementation 'com.github.shts:StoriesProgressView:3.0.0'
+
+    /*Todo Lottie Animation Progress Dialog*/
+    implementation 'com.github.welcome2c:LottieProgressDialog:1.0.1'
+
+    implementation "androidx.palette:palette-ktx:1.0.0"
 }
 
 kapt {

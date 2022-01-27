@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.development.mydaggerhiltmvvm.view.fragment.dashboard_fragment.LottieProgressDialogFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.dashboard_fragment.LottieProgressDialogFragment">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 6" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 9" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bt9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:text="Example 10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

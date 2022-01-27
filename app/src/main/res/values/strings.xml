@@ -14,4 +14,9 @@
         <item>20</item>
         <item>70</item>
     </string-array>
+    <string name="codecanyon_url">https://www.google.co.in/</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -18,4 +18,12 @@
     <color name="progress_max_active">@color/white</color>
 
     <color name="gray_scale">#8affffff</color>
+    <color name="dark_gray">#34495E</color>
+
+    <color name="shadow">#B0000000</color>
+    <color name="green">#42b549</color>
+    <color name="light_gray">#DDDDDD</color>
+    <color name="line_color">#20FFFFFF</color>
+    <color name="darker_gray">#212F3C</color>
+    <color name="gray">#85929E</color>
 </resources>
